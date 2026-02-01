@@ -3,7 +3,7 @@ const db = require("../db/connection");
 exports.selectComics = (
   sort_by = "episode",
   order = "DESC",
-  limit = 10,
+  limit = 10000,
   p
 ) => {
   const validSortBy = [
