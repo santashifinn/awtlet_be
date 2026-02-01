@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS awtlet_be;
+
+CREATE DATABASE awtlet_be;

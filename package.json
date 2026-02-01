@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "seed": "node ./db/seeds/run-seed.js",
     "start": "node listen.js",
     "dev": "nodemon listen.js",
+    "seed-prod": "NODE_ENV=production npm run seed",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -18,6 +20,7 @@
     "pg": "^8.18.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.11"
+    "nodemon": "^3.1.11",
+    "pg-format": "^1.0.4"
   }
 }
