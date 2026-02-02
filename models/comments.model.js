@@ -19,8 +19,8 @@ exports.insertComment = (comment, comic_id) => {
   const { author, body } = comment;
   return db
     .query(
-      `INSERT INTO comments (author, body, comic_id) VALUES ($1, $2, $3) RETURNING *;`,
-      [author, body, comic_id],
+      `INSERT INTO comments (episode, author, body, comic_id) VALUES ($1, $2, $3, $4) RETURNING *;`,
+      [comic_id, author, body, comic_id],
     )
     .then(({ rows }) => {
       return rows[0];
