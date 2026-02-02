@@ -1,6 +1,6 @@
 const db = require("../db/connection");
 
-exports.selectCommentsByComic = (comic_id, limit = 10, p) => {
+exports.selectCommentsByComic = (comic_id, limit = 100000, p) => {
   let sqlQuery = `SELECT * FROM comments
       WHERE comments.comic_id = ${comic_id}
       ORDER BY created_at DESC `;
