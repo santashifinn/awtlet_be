@@ -38,19 +38,12 @@ const seed = ({ comicData, commentData }) => {
       const formattedComicData = comicData.map(convertTimestampToDate);
       const insertComicsQueryStr = format(
         "INSERT INTO comics (episode, author, created_at, likes) VALUES %L RETURNING *;",
-        formattedComicData.map(
-          ({
-            episode,
-            author,
-            created_at,
-            likes = 0,
-          }) => [
-            episode,
-            author,
-            created_at,
-            likes,
-          ],
-        ),
+        formattedComicData.map(({ episode, author, created_at, likes = 0 }) => [
+          episode,
+          author,
+          created_at,
+          likes,
+        ]),
       );
 
       return db.query(insertComicsQueryStr);
@@ -62,14 +55,14 @@ const seed = ({ comicData, commentData }) => {
       const insertCommentsQueryStr = format(
         "INSERT INTO comments (episode, author, body, comic_id, created_at, likes) VALUES %L;",
         formattedCommentData.map(
-          ({
+          ({ episode, author, body, comic_id, created_at, likes = 0 }) => [
             episode,
             author,
             body,
             comic_id,
             created_at,
-            likes = 0,
-          }) => [episode, body, author, comic_id, created_at, likes],
+            likes,
+          ],
         ),
       );
       return db.query(insertCommentsQueryStr);

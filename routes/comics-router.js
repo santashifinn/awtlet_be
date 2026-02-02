@@ -14,6 +14,8 @@ const {
 
 comicsRouter.get("/", getComics);
 
+comicsRouter.get("/:comic_id", getComicById);
+
 comicsRouter.post("/", postComic);
 
 comicsRouter.patch("/:comic_id", updateLikes);
